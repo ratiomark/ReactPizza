@@ -1,23 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+// import { useState, useEffect } from "react"
+
+import Header from './components/Header';
+import Categories from './components/Categories';
+import Sort from './components/Sort';
+import { Home } from "./pages/Home";
+import PizzaBlock from './components/PizzaBlock/PizzaBlock';
+import { Skeleton } from "./components/PizzaBlock/Skeleton";
+import pizzas from './data/pizzaJSON.json'
+import { Routes, Route } from "react-router-dom";
+import { Page404 } from './pages/Page404';
+import Cart from './pages/Cart';
+// import './scss/app.scss';
+import './scss/app.scss';
+// import './App.css';
+
 
 function App() {
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="wrapper">
+      <Header />
+      <div className="content">
+        <div className="container">
+          {/* <Home /> */}
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/cart' element={<Cart />} />
+            <Route path='*' element={<Page404 />} />
+          </Routes>
+        </div>
+      </div>
     </div>
   );
 }
