@@ -1,14 +1,22 @@
 import { useState } from 'react';
 
-export default function Sort() {
+export default function Sort({ sortObject, onSortChange }) {
   const [open, setOpen] = useState(true)
-  const [activeSortIndex, setActiveSortIndex] = useState(0)
-  const onClickSortItem = (index) => {
-    setActiveSortIndex(index)
+  // const [activeSortIndex, setActiveSortIndex] = useState(0)
+  const onClickSortItem = (obj) => {
+    // setActiveSortIndex(index)
+    console.log(obj)
+    onSortChange(obj)
     setOpen(false)
   }
-  const listSortNames = ["популярности", "цене", "алфавиту"]
-  const activeSortName = listSortNames[activeSortIndex]
+  const listSortObjects = [
+    { name: "популярности", sort: "rating", direction: undefined },
+    { name: "цене ↑", sort: "price", direction: "asc" },
+    { name: "цене ↓", sort: "price", direction: "desc" },
+    { name: "алфавиту", sort: "title", direction: undefined }
+  ]
+  // const listSortNames = ["популярности", "цене", "алфавиту"]
+  // const activeSortName = listSortNames[activeSortIndex]
   return (
     <div class="sort">
       <div class="sort__label">
@@ -18,15 +26,15 @@ export default function Sort() {
             fill="#2C2C2C" />
         </svg>
         <b>Сортировка по:</b>
-        <span onClick={() => setOpen(!open)}>{activeSortName}</span>
+        <span onClick={() => setOpen(!open)}>{sortObject.name}</span>
       </div>
       {open && <div class="sort__popup">
         <ul>
-          {listSortNames.map((name, index) => (
+          {listSortObjects.map(({ name, sort, direction }, index) => (
             <li
               key={name}
-              className={activeSortIndex === index ? "active" : null}
-              onClick={() => onClickSortItem(index)}
+              className={name === sortObject.name ? "active" : null}
+              onClick={() => onClickSortItem({ name, sort, direction })}
             >
               {name}
             </li>
