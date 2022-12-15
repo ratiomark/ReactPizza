@@ -1,11 +1,17 @@
 import { Link } from 'react-router-dom'
+import { HeaderLogo } from './headerLogo/HeaderLogo'
+import HeaderCart from './headerCart/HeaderCart'
 import SearchPanel from './searchPanel/SearchPanel'
-import logo from "../assets/img/pizza-logo.svg"
+import { createContext } from 'react'
+// import logo from "../assets/img/pizza-logo.svg"
+
 export default function Header() {
+  
   return (
     <div className="header">
       <div className="container">
-        <Link to="/">
+        <HeaderLogo />
+        {/* <Link to="/">
           <div className="header__logo">
             <img width="38" src={logo} alt="Pizza logo" />
             <div className='header__main-title'>
@@ -13,9 +19,9 @@ export default function Header() {
               <p>самая вкусная пицца во вселенной</p>
             </div>
           </div>
-        </Link>
+        </Link> */}
         <SearchPanel />
-        <Link to="/cart">
+        {/* <Link to="/cart">
           <div className="header__cart">
             <a href="/cart.html" className="button button--cart">
               <span>520 ₽</span>
@@ -34,7 +40,8 @@ export default function Header() {
               <span>3</span>
             </a>
           </div>
-        </Link>
+        </Link> */}
+        <HeaderCart />
       </div>
     </div>
   )
