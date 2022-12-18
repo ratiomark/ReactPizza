@@ -16,9 +16,24 @@ $orange: #fe5f1e;
 $container-width: 90%;
 
 $duration: 0.15s;
+::-webkit-scrollbar {
+  width: 10px;
+}
 
+::-webkit-scrollbar-track {
+  // -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+  // background-color: #f3f3f3;
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: linear-gradient(180deg, #f5865a, #fe5f1e);
+}
 body {
   background-color: $background;
+  overflow-y: scroll;
 }
 
 .wrapper {
@@ -28,6 +43,9 @@ body {
   margin: 50px auto;
   border-radius: 10px;
   max-width: 1400px;
+  min-height: 938px;
+  transition: all 0.3s;
+
   @media screen and (max-width: 645px) {
     width: calc(100vw - 30px);
     margin-top: 15px;
@@ -44,9 +62,12 @@ body {
   &__items {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(auto-fill, 1fr);
+
+    // grid-template-rows: repeat(2, 1fr);
     grid-column-gap: 10px;
     grid-row-gap: 0px;
+    justify-items: center;
     @media screen and (max-width: 1440px) {
       grid-template-columns: repeat(3, 1fr);
     }
@@ -88,7 +109,7 @@ body {
     justify-content: space-between;
     align-items: center;
   }
-  .content__items{
+  .content__items {
     display: block;
   }
   .content__title {
@@ -104,7 +125,7 @@ body {
       margin-right: 10px;
       path {
         stroke: $black;
-        stroke-width: 1.9;
+        strokewidth: 1.9;
       }
     }
   }
@@ -293,7 +314,7 @@ body {
           margin-right: 12px;
           path {
             fill: transparent;
-            stroke-width: 2;
+            strokewidth: 2;
           }
         }
       }

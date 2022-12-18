@@ -3,7 +3,10 @@
 .header {
   border-bottom: 1px solid $gray-line;
   padding: 40px 0;
-
+  &__cart {
+    min-width: 172px;
+    // display: flex;
+  }
   .container {
     display: flex;
     align-items: center;

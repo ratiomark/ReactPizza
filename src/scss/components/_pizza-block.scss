@@ -17,9 +17,13 @@
 
   &__title {
     font-size: 20px;
+    min-height: 53px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-weight: 900;
     letter-spacing: 1%;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 
   &__selector {
